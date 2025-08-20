@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int findNumbers(std::vector<int>& nums) {
+        int finalCount = 0;
+        for (int num : nums) {
+            int digits = (num == 0) ? 1 : static_cast<int>(std::log10(num)) + 1;
+            if (digits % 2 == 0) {
+                finalCount++;
+            }
+        }
+        return finalCount;
+    }
+};
