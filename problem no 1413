@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int minStartValue(vector<int>& nums) {
+        int ans=-1;
+        bool found=false;
+        int i=1;
+        while(found==false)
+        {
+            int sum=i;
+            bool check=false;
+            for(int j=0;j<nums.size();j++) 
+            {
+                sum+=nums[j];
+                if(sum<1)
+                {
+                    check=true;
+                    break;   
+                }
+            }
+            if(check==false) 
+            {
+                ans=i;
+                break;
+            }
+            i++;
+        }
+        return ans;
+    }
+};
