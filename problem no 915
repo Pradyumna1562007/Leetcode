@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int partitionDisjoint(vector<int>& nums) 
+    {
+        int s=nums.size();
+        vector<int> rightMin(s);
+        rightMin[s-1]=nums[s-1];
+        for(int i=s-2;i>=0;i--)
+        {
+            rightMin[i]=min(rightMin[i+1],nums[i]);
+        }
+        int maxyet=nums[0];
+        for(int i=1;i<s;i++)
+        {
+            if(rightMin[i]>=maxyet)
+            {
+                return i;
+            }
+            maxyet=max(maxyet,nums[i]);
+        }
+        return -1;
+    }
+};
