@@ -1,0 +1,21 @@
+class Solution {
+    public int findNthDigit(int n) {
+        
+        long dgtlen = 1;
+        int s = 1;
+        int e = 9;
+
+        while(n > dgtlen*e){
+            n -= dgtlen*e;
+            dgtlen++;
+            s = s*10;
+            e = e*10;
+        }
+
+        s += ((n-1)/dgtlen);
+        String number = String.valueOf(s);
+
+        int pos = (int) ((n-1)%dgtlen);
+        return number.charAt(pos) - '0';
+    }
+}
